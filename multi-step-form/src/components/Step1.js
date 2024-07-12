@@ -11,7 +11,7 @@ function Step1({ formData, handleChange, errors }) {
         <input
           type="text"
           name="name"
-          placeholder='Name'
+          placeholder='Name eg.John'
           value={formData.name}
           onChange={handleChange}
         />
@@ -24,7 +24,7 @@ function Step1({ formData, handleChange, errors }) {
         <input
           type="email"
           name="email"
-          placeholder='Email'
+          placeholder='Email eg. john@gmail.com'
           value={formData.email}
           onChange={handleChange}
         />
@@ -37,7 +37,7 @@ function Step1({ formData, handleChange, errors }) {
         <input
           type="text"
           name="phone"
-          placeholder='Phone'
+          placeholder='Phone eg. 1234567890'
           value={formData.phone}
           onChange={handleChange}
         />

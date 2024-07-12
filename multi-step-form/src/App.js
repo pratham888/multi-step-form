@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import Step1 from './components/Step1';
 import Step2 from './components/Step2';
@@ -70,7 +69,6 @@ function App() {
     const newErrors = validate(formData, step);
     if (Object.keys(newErrors).length === 0) {
       console.log('Form Submitted Successfully:', formData);
-      // You can replace the above line with an API call to submit the form data
       alert('Form Submitted Successfully!');
       setStep(0); // Resetting to Step 1 after successful submission
       setFormData({
@@ -92,16 +90,26 @@ function App() {
   return (
     <div className="App">
       <div className="header">
-      <h1 className="heading">Multi Step Form</h1>
+        <h1 className="heading">Multi Step Form</h1>
       </div>
+      <div className="step-indicator">
+        <div className={`circle ${step >= 0 ? 'active' : ''}`}>1</div>
+        <div className="line"></div>
+        <div className={`circle ${step >= 1 ? 'active' : ''}`}>2</div>
+        <div className="line"></div>
+        <div className={`circle ${step >= 2 ? 'active' : ''}`}>3</div>
+      </div>
+      
       <div className="form-container">
         {step === 0 && <Step1 formData={formData} setFormData={setFormData} handleChange={handleChange} errors={errors} />}
         {step === 1 && <Step2 formData={formData} setFormData={setFormData} handleChange={handleChange} errors={errors} />}
         {step === 2 && <Step3 formData={formData} />}
 
-        {step > 0 && <button onClick={handlePrevious}>Previous</button>}
-        {step < 2 && <button onClick={handleNext}>Next</button>}
-        {step === 2 && <button onClick={handleSubmit}>Submit</button>}
+        <div className="navigation-buttons">
+          {step > 0 && <button onClick={handlePrevious}>Previous</button>}
+          {step < 2 && <button onClick={handleNext}>Next</button>}
+          {step === 2 && <button onClick={handleSubmit}>Submit</button>}
+        </div>
       </div>
     </div>
   );
